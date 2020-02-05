@@ -1,16 +1,78 @@
 {
   "name": "tc39-observable-proposal-proposed-change",
   "version": "1.0.0",
-  "description": "Simple Parcel Sandbox",
-  "main": "index.html",
+  "description": "Observable extras",
+  "keywords": [],
+  "main": "./Observable.js",
+  "type": "module",
   "scripts": {
-    "start": "parcel index.html --open",
-    "build": "parcel build index.html"
+    "test": "c8 node scripts/tests.js",
+    "lint": "eslint ."
   },
-  "dependencies": {},
+  "c8": {
+    "reporter": [
+      "html",
+      "text",
+      "text-summary"
+    ],
+    "exclude": [
+      "scripts/",
+      "**/__tests__/"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "browser": false
+    },
+    "parserOptions": {
+      "ecmaVersion": "2020",
+      "sourceType": "module"
+    },
+    "extends": [
+      "airbnb-base",
+      "plugin:prettier/recommended"
+    ],
+    "ignorePatterns": [
+      "node_modules/",
+      "coverage/"
+    ],
+    "globals": {
+      "globalThis": "readonly"
+    },
+    "rules": {
+      "import/extensions": [
+        "error",
+        "ignorePackages"
+      ],
+      "no-restricted-syntax": [
+        "error",
+        "ForInStatement",
+        "LabeledStatement",
+        "WithStatement"
+      ],
+      "no-use-before-define": [
+        "error",
+        {
+          "functions": false
+        }
+      ]
+    }
+  },
+  "prettier": {
+    "trailingComma": "all"
+  },
+  "dependencies": {
+    "abort-controller": "^3.0.0"
+  },
   "devDependencies": {
-    "@babel/core": "7.2.0",
-    "parcel-bundler": "^1.6.1"
-  },
-  "keywords": []
+    "c8": "^7.0.1",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^1.19.1",
+    "sinon": "^8.1.1"
+  }
 }
